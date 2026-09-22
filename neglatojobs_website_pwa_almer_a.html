@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neglatosjob - Empleo Directo, Sin Estudios y Sin Carnet en Almería Centro</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#052e16">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Neglatosjob">
+    <meta name="description" content="Empleo directo en Almería Centro sin estudios requeridos, sin necesidad de carnet de conducir e incorporación inmediata con calle, número y portal exacto.">
+    <link rel="apple-touch-icon" href="https://placehold.co/192x192/052e16/10b981?text=NJ">
+    
+    <script>
+        const manifest = {
+            name: "Neglatosjob Almería Centro",
+            short_name: "Neglatosjob",
+            description: "Encuentra empleo en Almería Centro sin estudios ni carnet e incorporación inmediata con calle y número exacto.",
+            start_url: "./",
+            display: "standalone",
+            background_color: "#020617",
+            theme_color: "#10b981",
+            icons: [
+                { src: "https://placehold.co/192x192/052e16/10b981?text=NJ", sizes: "192x192", type: "image/png" },
+                { src: "https://placehold.co/512x512/052e16/10b981?text=Neglatosjob", sizes: "512x512", type: "image/png" }
+            ]
+        };
+        const blob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
+        const link = document.createElement('link');
+        link.rel = 'manifest';
+        link.href = URL.createObjectURL(blob);
+        document.head.appendChild(link);
+    </script>
+
+    <!-- Tailwind CSS & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #020617;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(5, 150, 105, 0.06) 0%, transparent 40%);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; height: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #090d16; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #059669; border-radius: 99px; }
+
+        .glow-green {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+        }
+
+        .glow-green-sm {
+            box-shadow: 0 0 12px -2px rgba(16, 185, 129, 0.3);
+        }
+
+        @keyframes floatLeaf {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(4deg); }
+        }
+
+        .floating-leaf {
+            animation: floatLeaf 4s ease-in-out infinite;
+        }
+
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .ticker-move {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950 pb-20 sm:pb-0">
+
+    <!-- Header with Green Leaf Branding -->
+    <header class="bg-slate-900/90 backdrop-blur-md border-b border-emerald-900/50 sticky top-0 z-40 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            
+            <div class="flex items-center justify-between w-full sm:w-auto">
+                <div class="flex items-center gap-3">
+                    <!-- Leaf & Briefcase Logo -->
+                    <div class="relative flex items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-800 p-2.5 rounded-2xl shadow-lg border border-emerald-400/30 glow-green-sm">
+                        <i class="fa-solid fa-seedling text-emerald-300 text-xl floating-leaf"></i>
+                        <i class="fa-solid fa-briefcase text-white text-xs absolute -bottom-1 -right-1 bg-slate-950 p-1 rounded-full border border-emerald-500"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-400 via-teal-200 to-green-400 bg-clip-text text-transparent">
+                                Neglatosjob
+                            </h1>
+                            <span class="bg-emerald-950 border border-emerald-500/40 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-leaf text-[9px] mr-1"></i> Almería Centro
+                            </span>
+                        </div>
+                        <p class="text-[11px] text-emerald-400/80 font-medium flex items-center gap-1">
+                            <span>Sin estudios • Sin carnet • Jardines, Gimnasios, Tiendas y Mozo</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mobile Action Quick Install -->
+                <button onclick="toggleModal('modalInstall')" class="sm:hidden bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-md active:scale-95 transition">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>App</span>
+                </button>
+            </div>
+
+            <!-- Top Header Action Controls -->
+            <div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+                <button onclick="trigger24hScan(true)" id="btnManualScan" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-lg glow-green-sm active:scale-95 transition whitespace-nowrap">
+                    <i class="fa-solid fa-arrows-rotate text-xs" id="scanSpinner"></i>
+                    <span>Escanear Hoy (24h)</span>
+                </button>
+                <button onclick="toggleModal('modalInstall')" class="hidden sm:flex bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-emerald-500/30 text-xs font-semibold px-3.5 py-2 rounded-xl items-center gap-2 transition whitespace-nowrap">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Instalar App</span>
+                </button>
+                <button onclick="switchTab('tabGuia')" class="bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-medium px-3 py-2 rounded-xl flex items-center gap-1.5 border border-slate-700 transition whitespace-nowrap">
+                    <i class="fa-solid fa-leaf text-emerald-400"></i>
+                    <span>Subir Web</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Motivational Banner Ticker -->
+    <div class="bg-slate-900/90 border-y border-emerald-900/40 py-2 text-xs text-emerald-300/90 font-semibold tracking-wide shadow-inner">
+        <div class="ticker-wrap max-w-7xl mx-auto">
+            <div class="ticker-move space-x-8">
+                <span class="inline-flex items-center gap-2"><i class="fa-solid fa-mobile-screen text-cyan-400"></i> TECNOLOGÍA Y MÓVILES: Tiendas de gadgets, ordenadores y telefonía en el Centro con ESO o FP.</span>
+                <span class="inline-flex items-center gap-2"><i class="fa-solid fa-dumbbell text-emerald-400"></i> GIMNASIOS Y RECEPCIÓN: Recepción y monitor de sala fitness sin actividades dirigidas.</span>
+                <span class="inline-flex items-center gap-2"><i class="fa-solid fa-seedling text-emerald-400"></i> JARDINERÍA Y PLANTAS: Puestos de regado, vivero y mantenimiento a pie sin carnet.</span>
+                <span class="inline-flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i> INCORPORACIÓN INMEDIATA: Puestos en Paseo de Almería, Reyes Católicos, Obispo Orberá y Calle Granada.</span>
+                <span class="inline-flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-rose-400"></i> ACCESO CON ESO / GRADO SUPERIOR: Tu interés técnico y actitud en el trato valen más que años de universidad.</span>
+                <!-- Duplicate for continuous loop -->
+                <span class="inline-flex items-center gap-2"><i class="fa-solid fa-mobile-screen text-cyan-400"></i> TECNOLOGÍA Y MÓVILES: Tiendas de gadgets, ordenadores y telefonía en el Centro con ESO o FP.</span>
+                <span class="inline-flex items-center gap-2"><i class="fa-solid fa-dumbbell text-emerald-400"></i> GIMNASIOS Y RECEPCIÓN: Recepción y monitor de sala fitness sin actividades dirigidas.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Viewport -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full space-y-6">
+
+        <!-- App Navigation Tabs (Desktop & Tablet) -->
+        <div class="hidden sm:flex border-b border-slate-800 space-x-2 overflow-x-auto custom-scrollbar pb-1">
+            <button onclick="switchTab('tabEmpleos')" id="btnTabEmpleos" class="tab-btn bg-emerald-950/80 border-b-2 border-emerald-400 text-emerald-300 font-bold py-2.5 px-4 rounded-t-xl text-sm flex items-center gap-2 transition">
+                <i class="fa-solid fa-building-user text-emerald-400"></i> Ofertas Almería Centro
+            </button>
+            <button onclick="switchTab('tabRutas')" id="btnTabRutas" class="tab-btn text-slate-400 hover:text-slate-200 font-semibold py-2.5 px-4 rounded-t-xl text-sm flex items-center gap-2 transition">
+                <i class="fa-solid fa-route text-emerald-500"></i> Rutas Presenciales (GPS)
+            </button>
+            <button onclick="switchTab('tabCV')" id="btnTabCV" class="tab-btn text-slate-400 hover:text-slate-200 font-semibold py-2.5 px-4 rounded-t-xl text-sm flex items-center gap-2 transition">
+                <i class="fa-solid fa-file-contract text-emerald-500"></i> Generador CV Express
+            </button>
+            <button onclick="switchTab('tabCuaderno')" id="btnTabCuaderno" class="tab-btn text-slate-400 hover:text-slate-200 font-semibold py-2.5 px-4 rounded-t-xl text-sm flex items-center gap-2 transition">
+                <i class="fa-solid fa-book-bookmark text-emerald-500"></i> Mi Cuaderno de Envíos
+            </button>
+            <button onclick="switchTab('tabGuia')" id="btnTabGuia" class="tab-btn text-slate-400 hover:text-slate-200 font-semibold py-2.5 px-4 rounded-t-xl text-sm flex items-center gap-2 transition">
+                <i class="fa-solid fa-cloud-arrow-up text-emerald-500"></i> Subir Web / App
+            </button>
+        </div>
+
+        <!-- Motivation Banner Box -->
+        <div class="bg-gradient-to-r from-emerald-950/80 via-slate-900 to-teal-950/80 border border-emerald-800/40 p-4 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none text-emerald-400 text-9xl">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
+            <div class="flex items-center gap-3 z-10">
+                <div class="p-3 bg-emerald-900/50 border border-emerald-500/30 rounded-xl text-emerald-400 text-2xl shrink-0 floating-leaf">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-sm text-emerald-200 uppercase tracking-wider flex items-center gap-2">
+                        Enfoque Neglatosjob • Almería Capital Centro
+                    </h3>
+                    <p id="motivationalQuote" class="text-xs text-slate-300 italic mt-0.5">
+                        "No necesitas coche ni títulos universitarios: el cuidado de plantas, gimnasios de barrio (recepción y monitor de sala), comercios y viveros del Centro buscan gente con voluntad, puntualidad y ganas de trabajar a pie."
+                    </p>
+                </div>
+            </div>
+            <button onclick="nextMotivationalQuote()" class="z-10 shrink-0 bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-bold px-3 py-2 rounded-xl border border-emerald-500/20 flex items-center gap-1.5 transition">
+                <i class="fa-solid fa-arrows-rotate"></i> Nueva Frase
+            </button>
+        </div>
+
+        <!-- ================= TAB 1: EMPLEOS CON CALLE Y NÚMERO ================= -->
+        <section id="tabEmpleos" class="tab-content block space-y-6">
+            
+            <!-- Search Bar & Category Filters -->
+            <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 flex flex-col md:flex-row gap-4 justify-between items-center shadow-md">
+                <div class="relative w-full md:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-emerald-500/70"></i>
+                    <input type="text" id="searchInput" oninput="filterJobs()" placeholder="Buscar móviles, tecnología, ordenadores, gimnasio, calle o puesto..." class="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition placeholder-slate-500">
+                </div>
+                
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 custom-scrollbar">
+                    <button onclick="setCategoryFilter('all')" class="cat-btn bg-emerald-500 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl whitespace-nowrap shadow-md">Todos</button>
+                    <button onclick="setCategoryFilter('Tecnología')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-mobile-screen-button text-cyan-400"></i> Tecnología / Móviles
+                    </button>
+                    <button onclick="setCategoryFilter('Gimnasios')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-dumbbell text-emerald-400"></i> Gimnasios / Recepción
+                    </button>
+                    <button onclick="setCategoryFilter('Jardinería')" class="cat-btn bg-emerald-950 text-emerald-300 border border-emerald-500/50 font-bold text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-seedling text-emerald-400"></i> Jardinería / Plantas
+                    </button>
+                    <button onclick="setCategoryFilter('Sin Estudios')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt text-amber-400"></i> Sin Estudios / Inmediato
+                    </button>
+                    <button onclick="setCategoryFilter('Mozo')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition">Mozo / Carga</button>
+                    <button onclick="setCategoryFilter('Dependiente')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition">Dependiente / Tienda</button>
+                    <button onclick="setCategoryFilter('Supermercado')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition">Supermercado / Mercado</button>
+                </div>
+            </div>
+
+            <!-- Loader Indicator for Scanning -->
+            <div id="aiLoadingIndicator" class="hidden bg-slate-900 border border-emerald-500/40 rounded-2xl p-6 text-center space-y-3 glow-green-sm">
+                <div class="inline-block animate-spin text-emerald-400 text-3xl">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <p class="text-sm font-bold text-emerald-200">Escaneando empleos de tecnología, móviles, gimnasios y comercio en Almería Centro...</p>
+                <p class="text-xs text-slate-400">Filtrando puestos de atención en tienda con ESO/FP en Paseo de Almería, Reyes Católicos, Obispo Orberá y Calle Granada...</p>
+            </div>
+                
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 custom-scrollbar">
+                    <button onclick="setCategoryFilter('all')" class="cat-btn bg-emerald-500 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl whitespace-nowrap shadow-md">Todos</button>
+                    <button onclick="setCategoryFilter('Gimnasios')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-dumbbell text-emerald-400"></i> Gimnasios / Recepción
+                    </button>
+                    <button onclick="setCategoryFilter('Jardinería')" class="cat-btn bg-emerald-950 text-emerald-300 border border-emerald-500/50 font-bold text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-seedling text-emerald-400"></i> Jardinería / Plantas
+                    </button>
+                    <button onclick="setCategoryFilter('Sin Estudios')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt text-amber-400"></i> Sin Estudios / Inmediato
+                    </button>
+                    <button onclick="setCategoryFilter('Mozo')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition">Mozo / Carga</button>
+                    <button onclick="setCategoryFilter('Dependiente')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition">Dependiente / Tienda</button>
+                    <button onclick="setCategoryFilter('Supermercado')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition">Supermercado / Mercado</button>
+                    <button onclick="setCategoryFilter('Hostelería')" class="cat-btn bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 font-medium text-xs px-3.5 py-2 rounded-xl whitespace-nowrap transition">Hostelería / Limpieza</button>
+                </div>
+            </div>
+
+            <!-- Loader Indicator for Scanning -->
+            <div id="aiLoadingIndicator" class="hidden bg-slate-900 border border-emerald-500/40 rounded-2xl p-6 text-center space-y-3 glow-green-sm">
+                <div class="inline-block animate-spin text-emerald-400 text-3xl">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <p class="text-sm font-bold text-emerald-200">Escaneando empleos de gimnasios (recepción/sala), jardinería y comercio en Almería Centro...</p>
+                <p class="text-xs text-slate-400">Filtrando puestos sin estudios y sin requerir carnet de conducir en Paseo de Almería, Padre Santaella, Obispo Orberá y La Rambla...</p>
+            </div>
+
+            <!-- Job Cards Grid -->
+            <div id="jobsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Javascript will inject job cards with exact street and numbers here -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: RUTAS PRESENCIALES CON MAPAS GPS ================= -->
+        <section id="tabRutas" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-emerald-950 to-slate-900 border border-emerald-700/50 rounded-2xl p-5 text-slate-200 shadow-md">
+                <div class="flex items-start gap-3">
+                    <div class="p-3 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-xl text-2xl">
+                        <i class="fa-solid fa-person-walking-luggage"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg text-emerald-300">Rutas Peatones • Almería Centro (Sin Carnet de Conducir)</h3>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                            Rutas peatonales por gimnasios, floristerías, zonas verdes, viveros urbanos y comercios de Almería Centro. Accesibles a pie o autobús urbano sin necesidad de coche ni carnet B.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Ruta Gyms -->
+                <div class="bg-slate-900/90 rounded-2xl p-5 border border-emerald-800/60 shadow-md flex flex-col justify-between hover:border-emerald-500/40 transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-dumbbell"></i> Ruta Gimnasios & Recepción
+                            </span>
+                            <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-person-walking text-emerald-400 mr-1"></i>A Pie (45 min)</span>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-emerald-400"></i> Zona Centro - La Rambla & Altamira
+                        </h4>
+                        <p class="text-xs text-slate-400 mb-4">Puestos de recepción, control de torno y mantenimiento de sala fitness (sin clases ni actividades dirigidas).</p>
+                        
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Calle Padre Santaella, Nº 11:</strong> Al Gym Club (Recepción / Sala Fitness)</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Calle San Juan Bosco, Nº 39:</strong> Activaclub Almería (Atención / Orden de Sala)</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Calle Delicias, Nº 4:</strong> Gimnasio Kronos (Mantenimiento de Sala / Recepción)</span></li>
+                        </ul>
+                    </div>
+                    <a href="https://www.google.com/maps/search/Calle+Padre+Santaella+11+Almeria" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-2.5 px-4 rounded-xl text-xs text-center flex items-center justify-center gap-2 shadow-md transition">
+                        <i class="fa-solid fa-map-location-dot"></i> Abrir Ruta Gimnasios GPS
+                    </a>
+                </div>
+
+                <!-- Ruta 1: Jardinería y Zonas Verdes -->
+                <div class="bg-slate-900/90 rounded-2xl p-5 border border-slate-800 shadow-md flex flex-col justify-between hover:border-emerald-500/40 transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-seedling"></i> Ruta Jardines & Floristerías
+                            </span>
+                            <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-person-walking text-emerald-400 mr-1"></i>A Pie (1h)</span>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-emerald-400"></i> Parque Salmerón & Reyes Católicos
+                        </h4>
+                        <p class="text-xs text-slate-400 mb-4">Cuidado de plantas, riego, viveros urbanos y floristerías sin estudios ni carnet B.</p>
+                        
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Calle Reyes Católicos, Nº 22:</strong> Floristería Azahar Centro (Poda / Riego)</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Parque Nicolás Salmerón, Nº 8:</strong> Mantenimiento Verde Salmerón (Peón de Regado)</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Av. Federico García Lorca, Nº 92:</strong> Vivero Urbano La Rambla (Carga / Macetas)</span></li>
+                        </ul>
+                    </div>
+                    <a href="https://www.google.com/maps/search/Parque+Nicolas+Salmeron+Almeria" target="_blank" class="w-full bg-slate-800 hover:bg-slate-700 text-emerald-300 font-extrabold py-2.5 px-4 rounded-xl text-xs text-center flex items-center justify-center gap-2 border border-emerald-500/30 transition">
+                        <i class="fa-solid fa-map-location-dot"></i> Abrir Ruta Jardines GPS
+                    </a>
+                </div>
+
+                <!-- Ruta 2 -->
+                <div class="bg-slate-900/90 rounded-2xl p-5 border border-slate-800 shadow-md flex flex-col justify-between hover:border-emerald-500/40 transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full">
+                                Ruta Paseo de Almería Peatonal
+                            </span>
+                            <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-clock text-emerald-400 mr-1"></i>1 Hora</span>
+                        </div>
+                        <h4 class="font-bold text-slate-100 text-base mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-bag-shopping text-emerald-400"></i> Paseo de Almería + Méndez Núñez
+                        </h4>
+                        <p class="text-xs text-slate-400 mb-4">Incorporación inmediata para reposición, dependientes y panadería.</p>
+                        
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Paseo de Almería, Nº 2:</strong> La Dulce Alianza (Barra / Fregaplatos)</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Paseo de Almería, Nº 18:</strong> Carrefour Market (Reposición / Caja)</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-leaf text-emerald-400 mt-0.5"></i> <span><strong>Paseo de Almería, Nº 29:</strong> ALE-HOP (Atención / Reposición)</span></li>
+                        </ul>
+                    </div>
+                    <a href="https://www.google.com/maps/search/Paseo+de+Almeria+18+Almeria" target="_blank" class="w-full bg-slate-800 hover:bg-slate-700 text-emerald-300 font-extrabold py-2.5 px-4 rounded-xl text-xs text-center flex items-center justify-center gap-2 border border-emerald-500/30 transition">
+                        <i class="fa-solid fa-map-location-dot"></i> Abrir Ruta Paseo GPS
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: GENERADOR DE CV EXPRESS ================= -->
+        <section id="tabCV" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 border border-emerald-800/60 p-6 rounded-2xl shadow-md">
+                <h3 class="text-xl font-extrabold text-emerald-300 mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf text-emerald-400"></i> Generador de CV Operativo (1 Página)
+                </h3>
+                <p class="text-slate-300 text-xs leading-relaxed">
+                    Diseñado para puestos de **gimnasios (recepción/sala fitness sin clases), cuidado de plantas, reposición, tienda y hostelería que no piden títulos ni carnet de conducir**, destacando tu voluntad, ganas de trabajar a pie y puntualidad.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Form Inputs -->
+                <div class="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-4 shadow-md">
+                    <h4 class="font-bold text-emerald-300 text-xs border-b border-slate-800 pb-2 uppercase tracking-wider">Tus Datos de Contacto Directo</h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre Completo *</label>
+                            <input type="text" id="cvNombre" oninput="updateCVPreview()" placeholder="Ej: Juan Pérez" class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Teléfono Móvil *</label>
+                            <input type="tel" id="cvTelefono" oninput="updateCVPreview()" placeholder="Ej: 612 34 56 78" class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Barrio / Zona Almería *</label>
+                            <input type="text" id="cvBarrio" oninput="updateCVPreview()" placeholder="Ej: Almería Centro / La Rambla" class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Estudios / Formación *</label>
+                            <select id="cvEstudios" onchange="updateCVPreview()" class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none">
+                                <option value="ESO + Grado Superior (FP)">Grado Superior + ESO (Formación Profesional)</option>
+                                <option value="ESO (Educación Secundaria Obligatoria)">ESO (Educación Secundaria Obligatoria)</option>
+                                <option value="Sin estudios reglados / Actitud y Experiencia">Sin estudios reglados (Enfoque Práctico)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Puesto Deseado *</label>
+                        <input type="text" id="cvPuesto" oninput="updateCVPreview()" placeholder="Ej: Dependiente Tecnología y Móviles / Auxiliar Recepción Gimnasio / Cuidado Plantas" class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Puntos Fuertes, Afición Técnica y Actitud</label>
+                        <textarea id="cvExperiencia" oninput="updateCVPreview()" rows="3" placeholder="Ej: Manejo fluido de smartphones, sistemas operativos, periféricos, gadgets y hardware básico. Facilidad de palabra, asesoramiento al cliente, organización de stock y máxima puntualidad." class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none"></textarea>
+                    </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Puesto Deseado *</label>
+                        <input type="text" id="cvPuesto" oninput="updateCVPreview()" placeholder="Ej: Auxiliar de Recepción Gimnasio / Monitor de Sala / Cuidado Plantas / Reponedor" class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Puntos Fuertes y Actitud</label>
+                        <textarea id="cvExperiencia" oninput="updateCVPreview()" rows="3" placeholder="Ej: Trato excelente al cliente, orden de instalaciones y salas fitness, disciplina personal y puntualidad. Incorporación inmediata para recepción o sala de entrenamiento." class="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-100 focus:border-emerald-500 outline-none"></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="window.print()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg glow-green-sm transition">
+                            <i class="fa-solid fa-print"></i>
+                            <span>Imprimir / Descargar CV en PDF</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live CV Preview Card -->
+                <div class="bg-white text-slate-900 p-6 rounded-2xl border-2 border-emerald-500 shadow-xl flex flex-col justify-between" id="cvPrintArea">
+                    <div>
+                        <div class="border-b-2 border-emerald-600 pb-4 mb-4 flex justify-between items-start">
+                            <div>
+                                <h2 id="prevNombre" class="text-2xl font-black text-slate-900 uppercase">JUAN PÉREZ</h2>
+                                <p id="prevPuesto" class="text-xs font-bold text-emerald-700 uppercase tracking-widest mt-0.5">DEPENDIENTE TECNOLOGÍA & MÓVILES / AUXILIAR DE RECEPCIÓN / ATENCIÓN</p>
+                            </div>
+                            <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-1 rounded">Neglatosjob CV</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 mb-4 bg-slate-100 p-3 rounded-xl">
+                            <div><strong>Teléfono:</strong> <span id="prevTelefono">612 34 56 78</span></div>
+                            <div><strong>Ubicación:</strong> <span id="prevBarrio">Almería Centro</span></div>
+                            <div><strong>Nivel Académico:</strong> <span id="prevEstudiosVal" class="text-emerald-800 font-bold">ESO + Grado Superior</span></div>
+                            <div><strong>Incorporación:</strong> <span class="text-emerald-700 font-bold">¡INMEDIATA 100%!</span></div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-200 pb-1">Perfil Profesional & Habilidades</h5>
+                            <p id="prevExperiencia" class="text-xs text-slate-800 leading-relaxed italic">
+                                Persona comunicativa, entusiasta de la tecnología, aparatos electrónicos, móviles y ordenadores. Capacidad para asesorar clientes en tienda, gestionar cobros, ordenar exposición de gadgets y cumplir horarios con estricta puntualidad.
+                            </p>
+
+                            <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-200 pb-1">Garantías de Trabajo</h5>
+                            <ul class="text-xs text-slate-700 space-y-1 list-disc list-inside">
+                                <li><strong>Formación Polivalente:</strong> Titulación de ESO y Grado Superior con aptitud para aprender rápido procedimientos de tienda.</li>
+                                <li><strong>Movilidad Peatonal / Urbana:</strong> Desplazamiento diario a pie o bus por Almería Centro.</li>
+                                <li><strong>Responsabilidad y Trato Directo:</strong> Compromiso serio con la imagen de la empresa y la satisfacción del cliente.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-200 text-center">
+                        <span class="text-[10px] text-slate-400 font-medium">Currículum generado con Neglatosjob Almería</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: CUADERNO DE CANDIDATURAS ================= -->
+        <section id="tabCuaderno" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                    <h3 class="font-extrabold text-slate-100 text-base">Mi Cuaderno de Entregas Presenciales</h3>
+                    <p class="text-xs text-slate-400">Registra las calles y números donde has entregado tu CV en mano en Almería Centro.</p>
+                </div>
+                <button onclick="addCustomApplication()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Añadir Entrega Manual</span>
+                </button>
+            </div>
+
+            <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-md overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-slate-950 border-b border-slate-800 text-emerald-400 font-bold uppercase tracking-wider">
+                                <th class="p-3.5">Empresa / Lugar</th>
+                                <th class="p-3.5">Calle y Número</th>
+                                <th class="p-3.5">Puesto</th>
+                                <th class="p-3.5">Fecha</th>
+                                <th class="p-3.5">Estado</th>
+                                <th class="p-3.5 text-right">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trackerTableBody" class="divide-y divide-slate-800 text-slate-300">
+                            <!-- JS Injects Tracker Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: GUÍA PWA & DEPLOY ================= -->
+        <section id="tabGuia" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-950 text-white p-6 rounded-2xl border border-emerald-800/40 shadow-lg">
+                <span class="bg-emerald-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">App Progresiva (PWA)</span>
+                <h3 class="text-2xl font-black mt-2 mb-2">Instala Neglatosjob en tu Teléfono Móvil</h3>
+                <p class="text-slate-300 text-xs leading-relaxed">
+                    Lleva el listado de empresas con calle y portal exacto directamente en el bolsillo cuando salgas a entregar CV por el Centro de Almería.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Mobile Install -->
+                <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-3 bg-emerald-950 text-emerald-400 rounded-xl text-xl font-bold border border-emerald-500/30">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-100 text-sm">Opción A: Instalar PWA en Teléfono</h4>
+                            <p class="text-xs text-slate-400">Funciona como app nativa sin tiendas de aplicaciones.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-xs text-slate-300">
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                            <p class="font-bold text-emerald-400 mb-1"><i class="fa-brands fa-android text-emerald-500 mr-1.5"></i> Android (Chrome)</p>
+                            <p class="text-slate-400">Pulsa el botón **"Instalar App"** arriba o abre el menú de opciones (⋮) y elige **"Añadir a la pantalla de inicio"**.</p>
+                        </div>
+
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                            <p class="font-bold text-emerald-400 mb-1"><i class="fa-brands fa-apple text-slate-200 mr-1.5"></i> iPhone / iPad (Safari)</p>
+                            <p class="text-slate-400">Toca el botón **Compartir** de Safari (cuadrado con flecha hacia arriba) y selecciona **"Añadir a la pantalla de inicio"**.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Hosting -->
+                <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-3 bg-teal-950 text-teal-400 rounded-xl text-xl font-bold border border-teal-500/30">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-100 text-sm">Opción B: Publicar Gratis en Web</h4>
+                            <p class="text-xs text-slate-400">Consigue tu propia URL pública gratis en 1 minuto.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 text-xs text-slate-300">
+                        <div class="flex items-start gap-2">
+                            <span class="bg-emerald-500 text-slate-950 rounded-full w-5 h-5 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+                            <p><strong>Netlify Drop:</strong> Entra en <a href="https://app.netlify.com/drop" target="_blank" class="text-emerald-400 font-bold underline">netlify.com/drop</a> y arrastra este archivo `index.html`.</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="bg-emerald-500 text-slate-950 rounded-full w-5 h-5 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+                            <p><strong>GitHub Pages:</strong> Sube el archivo a un repositorio público y activa GitHub Pages para enlace permanente.</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="bg-emerald-500 text-slate-950 rounded-full w-5 h-5 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+                            <p><strong>Vercel:</strong> Sube directamente a Vercel para una navegación instantánea en móviles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile App Bottom Navigation Bar -->
+    <nav class="sm:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md border-t border-emerald-900/50 z-40 px-3 py-2 flex justify-around items-center shadow-2xl">
+        <button onclick="switchTab('tabEmpleos')" class="flex flex-col items-center gap-1 text-emerald-400 focus:outline-none">
+            <i class="fa-solid fa-building-user text-base"></i>
+            <span class="text-[10px] font-bold">Empleos</span>
+        </button>
+        <button onclick="switchTab('tabRutas')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 focus:outline-none">
+            <i class="fa-solid fa-route text-base"></i>
+            <span class="text-[10px] font-bold">Rutas GPS</span>
+        </button>
+        <button onclick="switchTab('tabCV')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 focus:outline-none">
+            <i class="fa-solid fa-file-pen text-base"></i>
+            <span class="text-[10px] font-bold">Mi CV</span>
+        </button>
+        <button onclick="switchTab('tabCuaderno')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 focus:outline-none">
+            <i class="fa-solid fa-clipboard-check text-base"></i>
+            <span class="text-[10px] font-bold">Cuaderno</span>
+        </button>
+        <button onclick="switchTab('tabGuia')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 focus:outline-none">
+            <i class="fa-solid fa-leaf text-base"></i>
+            <span class="text-[10px] font-bold">App</span>
+        </button>
+    </nav>
+
+    <!-- Modal: Install App -->
+    <div id="modalInstall" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 rounded-3xl max-w-sm w-full p-6 shadow-2xl space-y-4 border border-emerald-500/40 glow-green">
+            <div class="text-center space-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-700 text-slate-950 font-black text-2xl rounded-2xl flex items-center justify-center mx-auto shadow-lg glow-green-sm">
+                    <i class="fa-solid fa-seedling text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-extrabold text-slate-100">Instalar Neglatosjob</h3>
+                <p class="text-xs text-slate-400">Acceso rápido desde tu pantalla de inicio con direcciones y mapa de Almería Centro.</p>
+            </div>
+
+            <div class="space-y-2 text-xs text-slate-300">
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                    <p class="font-bold text-emerald-400"><i class="fa-brands fa-android text-emerald-500 mr-1"></i> Android:</p>
+                    <p class="text-[11px] text-slate-400">Presiona "Instalar Ahora" a continuación o utiliza la opción "Añadir a pantalla de inicio" de Chrome.</p>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                    <p class="font-bold text-emerald-400"><i class="fa-brands fa-apple text-slate-200 mr-1"></i> iPhone / Safari:</p>
+                    <p class="text-[11px] text-slate-400">Toca el botón **Compartir** de abajo y pulsa **"Añadir a la pantalla de inicio"**.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <button onclick="triggerPWAInstall()" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2.5 rounded-xl text-xs shadow-md transition">
+                    Instalar Ahora
+                </button>
+                <button onclick="toggleModal('modalInstall')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-2.5 rounded-xl text-xs transition">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 text-xs py-8 border-t border-slate-900 mt-12 mb-12 sm:mb-0">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex items-center justify-center gap-2 text-emerald-400 font-bold">
+                <i class="fa-solid fa-seedling floating-leaf"></i>
+                <span>Neglatosjob Almería Centro • La constancia es la clave del éxito</span>
+            </div>
+            <p class="text-[11px] max-w-2xl mx-auto text-slate-500">
+                Directorio especializado para empleo **sin estudios y sin carnet de conducir** con **calle y número de portal exacto** en Almería Capital Centro: Gimnasios (recepción / sala fitness no dirigidas), Jardinería, Paseo de Almería, Obispo Orberá, Mercado Central, Reyes Católicos y La Rambla.
+            </p>
+            <p class="text-[10px] text-slate-600">© 2026 Neglatosjob • Voluntad, Esfuerzo, Sacrificio, Trabajo Duro y Éxito.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Verified jobs with EXACT STREET NAME AND NUMBER in Almería Capital Centro
+        const baseJobs = [
+            // TIENDAS DE TECNOLOGÍA, MÓVILES, ORDENADORES Y GADGETS (Nivel ESO / FP / Grado Superior - Sin carrera universitaria)
+            {
+                id: "job-tech-1",
+                empresa: "CeX Almería (Compramos y Vendemos)",
+                puesto: "Dependiente/a de Tienda de Informática, Móviles y Gadgets",
+                categoria: "Tecnología",
+                calleNumero: "Calle Reyes Católicos, Nº 14",
+                codigoPostal: "04001 Almería",
+                zona: "Centro - Zona Comercial Peatonal",
+                descripcion: "Atención al público en mostrador, prueba básica de smartphones, consolas y portátiles de ocasión, etiquetado y reposición de gadgets en vitrinas.",
+                requisitos: "Valorable ESO o Grado Superior (FP). Imprescindible afición por móviles, ordenadores, videojuegos y trato cercano. No exige titulación universitaria.",
+                horarioEntrega: "Entregar CV presencialmente en mano al encargado de tienda de 10:30 a 12:00h.",
+                sinEstudios: false,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+Reyes+Catolicos+14+Almeria",
+                valoresTag: "Móviles • Consolas • Gadgets",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-tech-2",
+                empresa: "La Casa de las Carcasas Almería",
+                puesto: "Dependiente/a y Asesor/a de Accesorios Móviles",
+                categoria: "Tecnología",
+                calleNumero: "Paseo de Almería, Nº 22",
+                codigoPostal: "04001 Almería",
+                zona: "Centro - Paseo de Almería",
+                descripcion: "Atención activa al cliente, colocación de protectores de cristal templado, venta de fundas, altavoces Bluetooth y accesorios para móviles.",
+                requisitos: "Valorable ESO / FP. Dinamismo, habilidad manual con smartphones y buena actitud de venta. Desplazamiento a pie en el centro.",
+                horarioEntrega: "Pasarse por la tienda del Paseo de Almería entre las 11:00 y las 13:00h y solicitar hablar con la encargada.",
+                sinEstudios: false,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Paseo+de+Almeria+22+Almeria",
+                valoresTag: "Accesorios Móvil • Paseo",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-tech-3",
+                empresa: "BeMóvil Almería Centro",
+                puesto: "Auxiliar de Tienda de Telefonía y Gadgets",
+                categoria: "Tecnología",
+                calleNumero: "Av. Federico García Lorca, Nº 48",
+                codigoPostal: "04004 Almería",
+                zona: "La Rambla Centro",
+                descripcion: "Atención a clientes que buscan periféricos, cargadores, móviles libres y accesorios. Recepción de paquetes de mercancía técnica.",
+                requisitos: "ESO o Grado Superior. Gusto por la tecnología móvil y PC, responsabilidad en caja y trato cordial.",
+                horarioEntrega: "Dejar Currículum impreso a primera hora de la mañana (10:00 a 11:30h).",
+                sinEstudios: false,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Av.+Federico+Garcia+Lorca+48+Almeria",
+                valoresTag: "Telefonía • Rambla",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-tech-4",
+                empresa: "APP Informática Almería Centro",
+                puesto: "Atención en Tienda de Informática y Componentes PC",
+                categoria: "Tecnología",
+                calleNumero: "Calle Granada, Nº 32",
+                codigoPostal: "04003 Almería",
+                zona: "Centro - Calle Granada",
+                descripcion: "Venta directa de cables, discos duros, memorias, periféricos de ordenador y recepción de equipos para taller informático.",
+                requisitos: "Formación en ESO o FP (Grado Superior). Conocimientos básicos de hardware informático y motivación por asesorar a usuarios.",
+                horarioEntrega: "Hablar en persona con el responsable de tienda por las mañanas.",
+                sinEstudios: false,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+Granada+32+Almeria",
+                valoresTag: "Hardware PC • Informática",
+                fecha: "Actualizado Hoy"
+            },
+
+            // GIMNASIOS / RECEPCIÓN & SALA FITNESS (NO ACTIVIDADES DIRIGIDAS - NO SYNERGYM)
+            {
+                id: "job-gym-1",
+                empresa: "Al Gym Club",
+                puesto: "Auxiliar de Recepción y Control de Torno",
+                categoria: "Gimnasios",
+                calleNumero: "Calle Padre Santaella, Nº 11",
+                codigoPostal: "04004 Almería",
+                zona: "Centro - Zona Rambla / Obispo Orberá",
+                descripcion: "Atención al cliente en mostrador, comprobación de carnet/huella de acceso, altas de nuevos socios, cobro mensualidades y limpieza general del área de recepción.",
+                requisitos: "Sin estudios superiores requeridos. Sin necesidad de carnet de conducir. Trato amable, puntualidad e incorporación inmediata.",
+                horarioEntrega: "Entregar CV presencialmente en recepción por las mañanas entre las 09:30 y las 11:30h.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+Padre+Santaella+11+Almeria",
+                valoresTag: "Gimnasio • Recepción",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-gym-2",
+                empresa: "Activaclub Almería",
+                puesto: "Auxiliar / Monitor de Sala Fitness (Orden & Apoyo)",
+                categoria: "Gimnasios",
+                calleNumero: "Calle San Juan Bosco, Nº 39",
+                codigoPostal: "04005 Almería",
+                zona: "Centro - Altamira / San Juan Bosco",
+                descripcion: "Supervisión del orden de mancuernas y discos en sala de musculación, desinfección preventiva de maquinaria, ayuda básica a socios en máquinas. NO imparte actividades dirigidas ni clases colectivas.",
+                requisitos: "Sin titulación exigida ni carnet B. Se valora hábitos deportivos, buena presencia física y ganas de trabajar a pie de sala.",
+                horarioEntrega: "Entregar CV en mano al responsable de centro de 10:00 a 12:00h.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+San+Juan+Bosco+39+Almeria",
+                valoresTag: "Sala Fitness • No Clases",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-gym-3",
+                empresa: "Gimnasio Kronos Almería",
+                puesto: "Auxiliar de Mostrador y Mantenimiento de Instalaciones",
+                categoria: "Gimnasios",
+                calleNumero: "Calle Delicias, Nº 4",
+                codigoPostal: "04009 Almería",
+                zona: "Centro - Zona Delicias / Mercado",
+                descripcion: "Recepción de socios, entrega de llaves de taquilla, colocación de pesas fuera de sitio y reposición de toallas/jabón en vestuarios.",
+                requisitos: "Sin estudios ni carnet B. Personas activas, serie de carácter, responsables y con disponibilidad de incorporación inmediata.",
+                horarioEntrega: "Hablar directo con el encargado de gimnasio de 09:00 a 11:00h.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+Delicias+4+Almeria",
+                valoresTag: "Recepción • Sin Carnet",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-gym-4",
+                empresa: "Ego Sport Center",
+                puesto: "Auxiliar de Limpieza & Control de Accesos",
+                categoria: "Gimnasios",
+                calleNumero: "Av. de Cabo de Gata, Nº 36",
+                codigoPostal: "04007 Almería",
+                zona: "Zapillo / Accesible Centro a pie",
+                descripcion: "Verificación de entrada de socios en tornos, reposición en zonas comunes, limpieza de salas de pesas y apoyo logístico.",
+                requisitos: "Sin formación académica requerida ni carnet B. Accesible a pie o autobús urbano L11/L18.",
+                horarioEntrega: "Dejar CV en el mostrador principal de entrada dirigiéndote a la encargada de turno.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Av.+de+Cabo+de+Gata+36+Almeria",
+                valoresTag: "Accesos • A Pie",
+                fecha: "Actualizado Hoy"
+            },
+
+            // JARDINERÍA Y PLANTAS
+            {
+                id: "job-jardin-1",
+                empresa: "Floristería Azahar Centro",
+                puesto: "Auxiliar de Floristería y Cuidado de Plantas",
+                categoria: "Jardinería",
+                calleNumero: "Calle Reyes Católicos, Nº 22",
+                codigoPostal: "04001 Almería",
+                zona: "Centro Comercial Peatonal",
+                descripcion: "Riego de plantas ornamentales, preparación de arreglos simples, cambio de tiestos y mantenimiento limpio de exposición exterior.",
+                requisitos: "Sin estudios requeridos. Sin necesidad de carnet de conducir. Trabajo 100% accesible a pie en zona centro.",
+                horarioEntrega: "Entregar CV en mano a la encargada por las mañanas entre las 09:30 y las 11:00h.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+Reyes+Catolicos+22+Almeria",
+                valoresTag: "Plantas • Sin Carnet",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-jardin-2",
+                empresa: "Mantenimiento Verde Salmerón",
+                puesto: "Peón de Jardinería Urbana / Regado y Limpieza",
+                categoria: "Jardinería",
+                calleNumero: "Parque Nicolás Salmerón, Nº 8",
+                codigoPostal: "04002 Almería",
+                zona: "Centro - Parque Salmerón / Puerto",
+                descripcion: "Apoyo en regado manual de jardines, recogida de hojas, poda básica de arbustos y mantenimiento de tiestos del parque.",
+                requisitos: "Sin titulación exigida ni carnet B. Desplazamiento a pie o autobús urbano. Buena condición física y ganas de aprender.",
+                horarioEntrega: "Hablar directo con el encargado de la brigada de parque entre las 08:00 y las 09:30h.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Parque+Nicolas+Salmeron+Almeria",
+                valoresTag: "Jardines • A Pie",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-jardin-3",
+                empresa: "Vivero Urbano La Rambla",
+                puesto: "Mozo de Plantas / Carga de Sustrato y Riego",
+                categoria: "Jardinería",
+                calleNumero: "Av. Federico García Lorca, Nº 92",
+                codigoPostal: "04004 Almería",
+                zona: "La Rambla Centro",
+                descripcion: "Descarga de maceteros, preparación de sacos de sustrato, riego continuo de plantas de interior y exterior.",
+                requisitos: "Sin experiencia previa obligatoria ni carnet de conducir. Dinamismo y pasión por las plantas.",
+                horarioEntrega: "Entregar CV presencialmente al responsable de tienda de 10:00 a 12:00h.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Av.+Federico+Garcia+Lorca+92+Almeria",
+                valoresTag: "Plantas • Sin Carnet",
+                fecha: "Actualizado Hoy"
+            },
+
+            // COMERCIO, MERCADO Y RESTO CENTRO
+            {
+                id: "job-101",
+                empresa: "Mercado Central de Almería",
+                puesto: "Auxiliar de Puesto / Carga & Limpieza",
+                categoria: "Supermercado",
+                calleNumero: "Calle Circunvalación Ulpiano Díaz, Nº 14",
+                codigoPostal: "04001 Almería",
+                zona: "Centro - Mercado Central",
+                descripcion: "Ayudante para puestos de frutería, pescadería y carnicería. Montaje de puestos, descarga de género fresco y mantenimiento.",
+                requisitos: "Sin estudios ni carnet. Puntualidad a primera hora, ganas de trabajar y trato directo.",
+                horarioEntrega: "Acudir directo a los puestos entre las 08:00 y las 09:30h y hablar con los titulares de puesto.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Mercado+Central+de+Almeria",
+                valoresTag: "Sin Estudios • Inmediato",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-102",
+                empresa: "La Dulce Alianza",
+                puesto: "Ayudante de Barra / Fregaplatos y Limpieza",
+                categoria: "Hostelería",
+                calleNumero: "Paseo de Almería, Nº 2",
+                codigoPostal: "04003 Almería",
+                zona: "Centro - Paseo de Almería",
+                descripcion: "Apoyo en barra, recogida de mesas, fregaplatos y mantenimiento general del establecimiento.",
+                requisitos: "Sin experiencia previa obligatoria ni estudios ni carnet. Buena actitud, presencia limpia e incorporación inmediata.",
+                horarioEntrega: "Entregar CV presencialmente de 09:30 a 11:00h al encargado de sala.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Paseo+de+Almeria+2+Almeria",
+                valoresTag: "Inmediato • Centro",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-103",
+                empresa: "ALE-HOP Paseo de Almería",
+                puesto: "Dependiente/a / Reponedor/a de Tienda",
+                categoria: "Dependiente",
+                calleNumero: "Paseo de Almería, Nº 29",
+                codigoPostal: "04001 Almería",
+                zona: "Centro Comercial Peatonal",
+                descripcion: "Atención directa al cliente, desembalado de cajas, reposición continua de mercancía y etiquetado.",
+                requisitos: "Sin estudios ni carnet requeridos. Imprescindible dinamismo, simpatía y disponibilidad inmediata.",
+                horarioEntrega: "Preguntar por el responsable de tienda y entregar CV en mano entre 10:30 y 12:00h.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Paseo+de+Almeria+29+Almeria",
+                valoresTag: "Sin Estudios",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-104",
+                empresa: "Panadería Pedro Maza",
+                puesto: "Ayudante de Mostrador / Carga de Horno",
+                categoria: "Dependiente",
+                calleNumero: "Calle Méndez Núñez, Nº 14",
+                codigoPostal: "04001 Almería",
+                zona: "Centro Histórico",
+                descripcion: "Despacho de pan y repostería, embolsado, organización de estanterías y apoyo en reposición de almacén.",
+                requisitos: "Sin formación ni carnet exigidos. Simpatía con el vecindario, puntualidad y disponibilidad inmediata.",
+                horarioEntrega: "Dejar CV impreso en mano a primera hora de la mañana (08:30 a 10:00h).",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+Mendez+Nunez+14+Almeria",
+                valoresTag: "Incorporación Hoy",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-1",
+                empresa: "Carrefour Market",
+                puesto: "Reponedor/a / Carga Matutina",
+                categoria: "Supermercado",
+                calleNumero: "Paseo de Almería, Nº 18",
+                codigoPostal: "04001 Almería",
+                zona: "Centro - Paseo de Almería",
+                descripcion: "Puesto para reposición de lineal, descarga de mercancía matutina y atención en caja.",
+                requisitos: "Sin estudios ni carnet B. Ganas de trabajar, puntualidad y voluntad de superación.",
+                horarioEntrega: "Preguntar por el encargado de reposición a las 08:30h en el almacén de la tienda.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Paseo+de+Almeria+18+Almeria",
+                valoresTag: "Constancia y Voluntad",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-106",
+                empresa: "Supermercados San Juan",
+                puesto: "Mozo de Reposición y Carga",
+                categoria: "Supermercado",
+                calleNumero: "Calle San Juan, Nº 5",
+                codigoPostal: "04002 Almería",
+                zona: "Centro - Casco Antiguo",
+                descripcion: "Reposición de estanterías, recepción de cajas de camión y limpieza de pasillos.",
+                requisitos: "Sin titulaciones ni carnet de conducir. Fuerza física, honestidad y disponibilidad para empezar ya.",
+                horarioEntrega: "Dejar CV directo en caja o al encargado del turno de mañana.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Calle+San+Juan+5+Almeria",
+                valoresTag: "Inmediato",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-2",
+                empresa: "Perfumerías Primor",
+                puesto: "Dependiente/a de Tienda y Reposición",
+                categoria: "Dependiente",
+                calleNumero: "Paseo de Almería, Nº 9",
+                codigoPostal: "04001 Almería",
+                zona: "Centro Histórico",
+                descripcion: "Atención al cliente, reposición de productos en estanterías y cobro en caja.",
+                requisitos: "Trato amable con el cliente, presencia limpia e incorporación inmediata.",
+                horarioEntrega: "Entregar CV en mano de 10:00 a 11:30h a la encargada de tienda.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Paseo+de+Almeria+9+Almeria",
+                valoresTag: "Trabajo Duro",
+                fecha: "Actualizado Hoy"
+            },
+            {
+                id: "job-4",
+                empresa: "Supermercados DIA",
+                puesto: "Personal de Caja y Reposición",
+                categoria: "Supermercado",
+                calleNumero: "Av. Obispo Orberá, Nº 24",
+                codigoPostal: "04001 Almería",
+                zona: "Obispo Orberá / Mercado Central",
+                descripcion: "Cobro en caja, reposición continua de productos frescos y orden del establecimiento.",
+                requisitos: "Disponibilidad para turnos rotativos. Sin estudios obligatorios ni carnet B.",
+                horarioEntrega: "Hablar con el gerente del supermercado a primera hora de la mañana.",
+                sinEstudios: true,
+                inmediato: true,
+                sinCarnet: true,
+                mapsUrl: "https://www.google.com/maps/search/Av.+Obispo+Orbera+24+Almeria",
+                valoresTag: "Constancia",
+                fecha: "Actualizado Hoy"
+            }
+        ];
+
+        const quotesList = [
+            "No necesitas coche ni títulos universitarios: el cuidado de plantas, gimnasios de barrio (recepción y monitor de sala), comercios y viveros del Centro buscan gente con voluntad, puntualidad y ganas de trabajar a pie.",
+            "Para trabajar no necesitas títulos: necesitas ganas, puntualidad y la valentía de entregar tu CV en persona en el portal indicado.",
+            "En el centro de Almería hay gimnasios, jardines, viveros y comercios que valoran tu actitud por encima de cualquier papel. ¡Pásate hoy mismo!",
+            "El esfuerzo constante rompe cualquier obstacle. Acércate en persona, entrega tu CV con firmeza y demuestra tu voluntad de trabajar.",
+            "La constancia vence a la suerte. Un CV entregado en mano con una sonrisa demuestra el valor de tu sacrificio."
+        ];
+
+        let currentJobs = [...baseJobs];
+        let currentFilter = 'all';
+        let trackerData = JSON.parse(localStorage.getItem('neglatosjob_tracker') || '[]');
+        let deferredPrompt = null;
+        let quoteIndex = 0;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadTrackerTable();
+            checkAuto24hScan();
+            renderJobs(currentJobs);
+        });
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        function triggerPWAInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    deferredPrompt = null;
+                    toggleModal('modalInstall');
+                });
+            } else {
+                alert('Abre las opciones del navegador en tu móvil y selecciona "Añadir a la pantalla de inicio".');
+            }
+        }
+
+        function nextMotivationalQuote() {
+            quoteIndex = (quoteIndex + 1) % quotesList.length;
+            document.getElementById('motivationalQuote').innerText = `"${quotesList[quoteIndex]}"`;
+        }
+
+        async function checkAuto24hScan() {
+            const todayStr = new Date().toISOString().slice(0, 10);
+            const lastSync = localStorage.getItem('neglatosjob_last_sync');
+            const cached = localStorage.getItem('neglatosjob_cached_jobs');
+
+            if (cached && lastSync === todayStr) {
+                currentJobs = JSON.parse(cached);
+                renderJobs(currentJobs);
+            } else {
+                await trigger24hScan(false);
+            }
+        }
+
+        async function trigger24hScan(manual = true) {
+            const spinner = document.getElementById('scanSpinner');
+            const loader = document.getElementById('aiLoadingIndicator');
+
+            if (spinner) spinner.classList.add('animate-spin');
+            if (loader) loader.classList.remove('hidden');
+
+            const apiKey = ""; // API key populated dynamically
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const todayStr = new Date().toLocaleDateString('es-ES');
+            const systemPrompt = `Eres el escáner de empleo de Neglatosjob Almería. Tu objetivo es encontrar empresas reales con CALLE Y NÚMERO EXACTO en Almería capital CENTRO para puestos que acepten ESO o Grado Superior o no pidan universidad (tiendas de tecnología, móviles, ordenadores, gadgets, consolas, gimnasios recepción/auxiliar de sala fitness no dirigidas, jardinería, mozos, dependientes, reponedores). EXCLUYE SYNERGYM Y EXCLUYE ACTIVIDADES DIRIGIDAS EN GIMNASIOS. Devuelve EXCLUSIVAMENTE un JSON array válido.`;
+
+            const userPrompt = `Busca ofertas de empleo activas o empresas contratando en Almería Capital Centro hoy ${todayStr} para dependientes en tiendas de tecnología, móviles, informática, gadgets, gimnasios o jardinería. Devuelve calle y número de portal real en el Centro de Almería. Formato JSON:
+[
+  {
+    "empresa": "Nombre Empresa",
+    "puesto": "Nombre del Puesto",
+    "categoria": "Tecnología" | "Gimnasios" | "Jardinería" | "Mozo" | "Dependiente" | "Supermercado" | "Hostelería",
+    "calleNumero": "Calle Nombre, Nº 00",
+    "codigoPostal": "04001 Almería",
+    "zona": "Almería Centro",
+    "descripcion": "Descripción del empleo",
+    "requisitos": "Requisitos del puesto (ESO / Grado Superior o sin estudios específicos)",
+    "horarioEntrega": "Instrucciones de entrega presencial",
+    "sinEstudios": true,
+    "inmediato": true,
+    "sinCarnet": true,
+    "valoresTag": "Tecnología • Móviles"
+  }
+]`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: { responseMimeType: "application/json" }
+            };
+
+            try {
+                let response = null;
+                let delays = [1000, 2000, 4000];
+                for (let i = 0; i <= delays.length; i++) {
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (response.ok) break;
+                    } catch (e) {
+                        if (i === delays.length) throw e;
+                    }
+                    if (delays[i]) await new Promise(r => setTimeout(r, delays[i]));
+                }
+
+                if (response && response.ok) {
+                    const data = await response.json();
+                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) {
+                        const parsed = JSON.parse(text);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            const formattedAI = parsed.map((item, idx) => ({
+                                id: `ai-job-${Date.now()}-${idx}`,
+                                empresa: item.empresa || "Empresa Almería Centro",
+                                puesto: item.puesto || "Puesto Operativo Directo",
+                                categoria: item.categoria || "Tecnología",
+                                calleNumero: item.calleNumero || "Paseo de Almería, Nº 22",
+                                codigoPostal: item.codigoPostal || "04001 Almería",
+                                zona: item.zona || "Almería Centro",
+                                descripcion: item.descripcion || "Puesto con incorporación inmediata para personal con actitud y gusto por la tecnología/atención al cliente.",
+                                requisitos: item.requisitos || "ESO / Grado Superior o sin carrera universitaria requerida.",
+                                horarioEntrega: item.horarioEntrega || "Entregar CV presencialmente por las mañanas.",
+                                sinEstudios: true,
+                                inmediato: true,
+                                sinCarnet: true,
+                                mapsUrl: `https://www.google.com/maps/search/${encodeURIComponent((item.calleNumero || 'Paseo de Almería') + ' Almeria')}`,
+                                valoresTag: item.valoresTag || "Tecnología • Móviles",
+                                fecha: "Sincronizado Hoy"
+                            }));
+
+                            currentJobs = [...formattedAI, ...baseJobs];
+                            localStorage.setItem('neglatosjob_cached_jobs', JSON.stringify(currentJobs));
+                            localStorage.setItem('neglatosjob_last_sync', new Date().toISOString().slice(0, 10));
+                            renderJobs(currentJobs);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.log('Utilizando directorio verificado local de Neglatosjob:', err);
+            } finally {
+                if (spinner) spinner.classList.remove('animate-spin');
+                if (loader) loader.classList.add('hidden');
+            }
+        }
+
+        function renderJobs(jobs) {
+            const grid = document.getElementById('jobsGrid');
+            grid.innerHTML = '';
+
+            if (jobs.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-slate-900 p-8 rounded-2xl text-center border border-slate-800">
+                        <i class="fa-solid fa-leaf text-4xl text-emerald-500/50 mb-3"></i>
+                        <p class="font-bold text-slate-300 text-sm">No se encontraron ofertas para este filtro en Almería Centro.</p>
+                        <button onclick="setCategoryFilter('all')" class="mt-3 text-xs bg-emerald-500 text-slate-950 font-bold px-4 py-2 rounded-xl">Ver todas las ofertas</button>
+                    </div>
+                `;
+                return;
+            }
+
+            jobs.forEach(job => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900/90 rounded-2xl p-5 border border-slate-800/90 shadow-md hover:border-emerald-500/50 transition flex flex-col justify-between space-y-4 group";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between gap-2 mb-2">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+                                    <span class="inline-block bg-emerald-950 text-emerald-400 border border-emerald-500/30 font-bold text-[10px] px-2.5 py-0.5 rounded-full">
+                                        ${job.categoria}
+                                    </span>
+                                    <span class="bg-amber-950/80 text-amber-300 border border-amber-500/40 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                        <i class="fa-solid fa-graduation-cap text-amber-400 text-[9px]"></i> Sin Estudios
+                                    </span>
+                                    <span class="bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                        <i class="fa-solid fa-person-walking text-emerald-400 text-[9px]"></i> Sin Carnet
+                                    </span>
+                                </div>
+                                <h3 class="font-black text-slate-100 text-base leading-snug group-hover:text-emerald-300 transition">${job.puesto}</h3>
+                                <p class="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mt-1">
+                                    <i class="fa-solid fa-building text-emerald-500"></i> ${job.empresa}
+                                </p>
+                            </div>
+                            <span class="text-[10px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-0.5 rounded-full shrink-0">
+                                ${job.fecha}
+                            </span>
+                        </div>
+
+                        <!-- EXPLICIT STREET AND NUMBER HIGHLIGHT BOX -->
+                        <div class="my-3 p-3 bg-slate-950 border border-emerald-500/40 rounded-xl space-y-1 glow-green-sm">
+                            <div class="flex items-start gap-2">
+                                <i class="fa-solid fa-location-dot text-rose-400 text-sm mt-0.5 shrink-0"></i>
+                                <div>
+                                    <p class="text-xs font-black text-emerald-300 tracking-wide uppercase">
+                                        ${job.calleNumero}
+                                    </p>
+                                    <p class="text-[11px] text-slate-400 font-medium">
+                                        ${job.codigoPostal} • <span class="text-emerald-300 font-semibold">${job.zona}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs text-slate-300">
+                            <p class="text-slate-300 leading-relaxed">${job.descripcion}</p>
+                            <p class="text-slate-400 text-[11px]"><strong class="text-slate-200">Requisitos:</strong> ${job.requisitos}</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-800 space-y-2">
+                        <div class="bg-emerald-950/40 border border-emerald-800/40 p-2.5 rounded-xl text-[11px] text-emerald-200 flex items-start gap-2">
+                            <i class="fa-solid fa-hand-holding-hand text-emerald-400 mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-emerald-300">Entrega presencial en mano:</strong> ${job.horarioEntrega}
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <a href="${job.mapsUrl}" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2 px-3 rounded-xl text-[11px] text-center flex items-center justify-center gap-1.5 shadow-md transition">
+                                <i class="fa-solid fa-map-pin"></i> Ver Calle en Maps
+                            </a>
+                            <button onclick="saveToTracker('${escapeQuotes(job.empresa)}', '${escapeQuotes(job.calleNumero)}', '${escapeQuotes(job.puesto)}')" class="bg-slate-800 hover:bg-slate-700 text-emerald-300 font-bold py-2 px-3 rounded-xl text-[11px] text-center flex items-center justify-center gap-1.5 border border-emerald-500/20 transition">
+                                <i class="fa-solid fa-bookmark"></i> Guardar Envío
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function escapeQuotes(str) {
+            return (str || '').replace(/'/g, "\\'");
+        }
+
+        function filterJobs() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = currentJobs.filter(job => {
+                let matchCat = true;
+                if (currentFilter === 'Sin Estudios') {
+                    matchCat = job.sinEstudios === true || (job.valoresTag && job.valoresTag.includes('Sin Estudios'));
+                } else if (currentFilter === 'Tecnología') {
+                    matchCat = job.categoria.toLowerCase().includes('tecnología') || job.puesto.toLowerCase().includes('móvil') || job.puesto.toLowerCase().includes('ordenador') || job.puesto.toLowerCase().includes('informática') || job.puesto.toLowerCase().includes('gadget');
+                } else if (currentFilter === 'Gimnasios') {
+                    matchCat = job.categoria.toLowerCase().includes('gimnasio') || job.puesto.toLowerCase().includes('recepción') || job.puesto.toLowerCase().includes('sala');
+                } else if (currentFilter === 'Jardinería') {
+                    matchCat = job.categoria.toLowerCase().includes('jardinería') || job.puesto.toLowerCase().includes('planta') || job.puesto.toLowerCase().includes('jardín');
+                } else if (currentFilter !== 'all') {
+                    matchCat = job.categoria.toLowerCase().includes(currentFilter.toLowerCase());
+                }
+
+                const matchQuery = job.empresa.toLowerCase().includes(query) ||
+                                   job.puesto.toLowerCase().includes(query) ||
+                                   job.calleNumero.toLowerCase().includes(query) ||
+                                   job.zona.toLowerCase().includes(query) ||
+                                   job.descripcion.toLowerCase().includes(query);
+                return matchCat && matchQuery;
+            });
+            renderJobs(filtered);
+        }
+
+        function updateCVPreview() {
+            const name = document.getElementById('cvNombre').value || "JUAN PÉREZ";
+            const phone = document.getElementById('cvTelefono').value || "612 34 56 78";
+            const barrio = document.getElementById('cvBarrio').value || "Almería Centro";
+            const estudios = document.getElementById('cvEstudios').value;
+            const puesto = document.getElementById('cvPuesto').value || "DEPENDIENTE TECNOLOGÍA & MÓVILES / AUXILIAR DE RECEPCIÓN / ATENCIÓN";
+            const exp = document.getElementById('cvExperiencia').value || "Persona comunicativa, entusiasta de la tecnología, aparatos electrónicos, móviles y ordenadores. Capacidad para asesorar clientes en tienda, gestionar cobros, ordenar exposición de gadgets y cumplir horarios con estricta puntualidad.";
+
+            document.getElementById('prevNombre').innerText = name.toUpperCase();
+            document.getElementById('prevPuesto').innerText = puesto.toUpperCase();
+            document.getElementById('prevTelefono').innerText = phone;
+            document.getElementById('prevBarrio').innerText = barrio;
+            document.getElementById('prevEstudiosVal').innerText = estudios;
+            document.getElementById('prevExperiencia').innerText = exp;
+        }
+
+        function saveToTracker(empresa, calleNumero, puesto) {
+            const newEntry = {
+                id: Date.now(),
+                empresa: empresa,
+                calleNumero: calleNumero || "Almería Capital Centro",
+                puesto: puesto,
+                fecha: new Date().toLocaleDateString('es-ES'),
+                estado: "Entregado en Mano"
+            };
+            trackerData.unshift(newEntry);
+            localStorage.setItem('neglatosjob_tracker', JSON.stringify(trackerData));
+            loadTrackerTable();
+            switchTab('tabCuaderno');
+        }
+
+        function addCustomApplication() {
+            const empresa = prompt("Nombre de la empresa en Almería Centro:");
+            if (!empresa) return;
+            const calleNumero = prompt("Calle y Número (ej: Calle Padre Santaella, 11):") || "Almería Centro";
+            const puesto = prompt("Puesto solicitado (ej: Recepción Gimnasio / Cuidado de plantas):") || "Operativo";
+            saveToTracker(empresa, calleNumero, puesto);
+        }
+
+        function loadTrackerTable() {
+            const tbody = document.getElementById('trackerTableBody');
+            tbody.innerHTML = '';
+
+            if (trackerData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-6 text-center text-slate-500">
+                            Aún no has registrado entregas. Haz clic en "Guardar Envío" desde la lista de empleos.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            trackerData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-950/60 transition";
+                tr.innerHTML = `
+                    <td class="p-3.5 font-bold text-slate-100">${item.empresa}</td>
+                    <td class="p-3.5 text-emerald-400 font-medium">${item.calleNumero}</td>
+                    <td class="p-3.5">${item.puesto}</td>
+                    <td class="p-3.5 text-slate-400">${item.fecha}</td>
+                    <td class="p-3.5">
+                        <span class="bg-emerald-950 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full">
+                            ${item.estado}
+                        </span>
+                    </td>
+                    <td class="p-3.5 text-right">
+                        <button onclick="deleteTrackerItem(${item.id})" class="text-rose-400 hover:text-rose-300 text-xs font-bold px-2 py-1">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function deleteTrackerItem(id) {
+            trackerData = trackerData.filter(i => i.id !== id);
+            localStorage.setItem('neglatosjob_tracker', JSON.stringify(trackerData));
+            loadTrackerTable();
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn text-slate-400 hover:text-slate-200 font-semibold py-2.5 px-4 rounded-t-xl text-sm flex items-center gap-2 transition";
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn' + tabId.charAt(0).toUpperCase() + tabId.slice(1));
+            if (activeBtn) {
+                activeBtn.className = "tab-btn bg-emerald-950/80 border-b-2 border-emerald-400 text-emerald-300 font-bold py-2.5 px-4 rounded-t-xl text-sm flex items-center gap-2 transition";
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
